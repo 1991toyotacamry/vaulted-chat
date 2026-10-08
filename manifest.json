@@ -1,0 +1,16 @@
+{
+  "name": "Vaulted",
+  "short_name": "Vaulted",
+  "description": "End-to-End Encrypted Chat",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#313338",
+  "theme_color": "#313338",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}

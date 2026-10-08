@@ -1,0 +1,62 @@
+{
+  "rules": {
+
+    "users": {
+      "$uid": {
+        ".read":  "auth !== null && auth.uid === $uid",
+        ".write": "auth !== null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['uid', 'email', 'displayName', 'createdAt'])
+                      && newData.child('uid').val() === auth.uid
+                      && newData.child('email').isString()
+                      && newData.child('displayName').isString()
+                      && newData.child('createdAt').isNumber()"
+      }
+    },
+
+    "rooms": {
+      "$roomId": {
+        "messages": {
+          ".read":  "auth !== null",
+          ".write": "auth !== null",
+
+          "$messageId": {
+            ".validate": "newData.hasChildren(['uid', 'displayName', 'ciphertext', 'timestamp'])
+                          && newData.child('uid').val() === auth.uid
+                          && newData.child('displayName').isString()
+                          && newData.child('ciphertext').isString()
+                          && newData.child('timestamp').isNumber()
+                          && newData.child('ciphertext').val().length > 0
+                          && newData.child('displayName').val().length > 0
+                          && newData.child('displayName').val().length <= 100
+                          && newData.child('ciphertext').val().length <= 10000"
+          }
+        },
+        "typing": {
+          ".read": "auth !== null",
+          "$uid": {
+            ".write": "auth !== null && auth.uid === $uid",
+            ".validate": "newData.hasChildren(['displayName', 'timestamp']) && newData.child('displayName').isString() && newData.child('timestamp').isNumber()"
+          }
+        },
+        "presence": {
+          ".read": "auth !== null",
+          "$uid": {
+            ".write": "auth !== null && auth.uid === $uid",
+            ".validate": "newData.isBoolean() && newData.val() === true"
+          }
+        },
+        "validator": {
+          ".read": "auth !== null",
+          ".write": "auth !== null",
+          ".validate": "newData.isString() && newData.val().length < 1000"
+        }
+      }
+    },
+
+    "$other": {
+      ".read":  false,
+      ".write": false
+    }
+
+  }
+}
