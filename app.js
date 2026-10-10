@@ -612,6 +612,7 @@ messageForm.addEventListener('submit', async (e) => {
     if (!plaintext || !currentUser || !currentRoomId) return;
 
     messageInput.value = '';
+    messageInput.style.height = 'auto';
     if (currentUser) {
         remove(ref(database, `rooms/${currentRoomId}/typing/${currentUser.uid}`)).catch(()=>{});
     }
