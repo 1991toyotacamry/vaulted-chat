@@ -128,6 +128,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    min-height: 100dvh;
+    height: 100dvh;
     overflow: hidden;
 }
 
@@ -140,6 +142,8 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    min-height: 100dvh;
+    height: 100dvh;
     padding: 24px;
     background: var(--bg-secondary);
 }
@@ -255,6 +259,7 @@ body {
     display: flex;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }
 
@@ -264,6 +269,7 @@ body {
     min-width: 180px;
     position: relative;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     background: var(--sidebar-bg);
@@ -393,6 +399,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    height: 100dvh;
     background: var(--bg-primary);
     min-width: 0;
 }
@@ -670,6 +677,15 @@ body.dark-theme .toast { background: #1e1f22; color: #dbdee1; }
     .message { max-width: 85%; }
 
     .btn-label { display: none; }
+
+    /* Disable drag handle on mobile */
+    .sidebar-resizer { display: none !important; }
+
+    /* Prevent iOS Safari auto-zoom on input focus */
+    input, textarea, select { font-size: 16px !important; }
+
+    /* Ensure modals don't overflow on small screens */
+    .modal { max-width: 92vw; padding: 20px; }
 
     
 }
